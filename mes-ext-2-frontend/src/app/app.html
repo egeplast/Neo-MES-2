@@ -1,0 +1,10 @@
+<app-header></app-header>
+<div class="flex h-screen pt-[52px]">
+  <app-sidebar
+    class="block fixed top-[52px] left-0 h-[calc(100vh-52px)] z-40 lg:static lg:h-full flex-shrink-0"
+  ></app-sidebar>
+  <main class="flex-1 overflow-y-auto bg-slate-50 p-6 ml-14 lg:ml-0">
+    <router-outlet></router-outlet>
+  </main>
+</div>
+<app-notification></app-notification>

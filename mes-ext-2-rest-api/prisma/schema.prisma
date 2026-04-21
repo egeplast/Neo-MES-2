@@ -1,0 +1,31 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model AuditLog {
+  id            String   @id @default(uuid())
+  timestamp     DateTime @default(now())
+  userAzureId   String?
+  userEmail     String?
+  userDisplay   String?
+  method        String
+  path          String
+  resource      String?
+  resourceId    String?
+  action        String
+  statusCode    Int
+  payload       Json?
+  response      Json?
+  ipAddress     String?
+  userAgent     String?
+
+  @@index([timestamp])
+  @@index([userAzureId])
+  @@index([resource, resourceId])
+  @@map("audit_log")
+}

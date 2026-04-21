@@ -1,0 +1,11 @@
+.loader {
+  width: 40px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 3px solid #e0e0e0;
+  border-right-color: #006db7;
+  animation: l2 1s infinite linear;
+}
+@keyframes l2 { to { transform: rotate(1turn); } }
+.progress-bar { animation: shrink 5s linear forwards; }
+@keyframes shrink { from { width: 100%; } to { width: 0%; } }

@@ -1,0 +1,45 @@
+<div
+  class="fixed bottom-10 right-0 transform z-50 flex flex-col gap-4 items-end p-8 max-w-full pointer-events-none"
+>
+  @for (notification of notificationStore.Notifications(); track notification.id) {
+    <div
+      class="pointer-events-auto transition-all duration-150 scale-0 border rounded-xl p-4 flex gap-4 items-center border-slate-200 bg-white shadow-lg"
+      [ngClass]="[
+        notification?.type === 'Info' ? 'scale-100' : '',
+        notification?.type === 'Error' ? 'scale-100' : '',
+        notification?.type === 'Loading' ? 'scale-100' : '',
+      ]"
+    >
+      @if (notification?.type === 'Loading') {
+        <div class="loader"></div>
+      } @else {
+        <div
+          class="absolute bottom-1 left-1 h-1 w-11/12 opacity-30 progress-bar rounded-full"
+          [ngClass]="notification.type === 'Error' ? 'bg-red-500' : 'bg-[#c29467]'"
+        ></div>
+        @if (notification.type === 'Error') {
+          <div class="bg-red-100 rounded-full p-3">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="border-2 border-red-400 size-5 rounded-full fill-red-400">
+              <path d="M320 496C342.1 496 360 513.9 360 536C360 558.1 342.1 576 320 576C297.9 576 280 558.1 280 536C280 513.9 297.9 496 320 496zM320 64C346.5 64 368 85.5 368 112C368 112.6 368 113.1 368 113.7L352 417.7C351.1 434.7 337 448 320 448C303 448 289 434.7 288 417.7L272 113.7C272 113.1 272 112.6 272 112C272 85.5 293.5 64 320 64z"/>
+            </svg>
+          </div>
+        }
+        @if (notification.type === 'Info') {
+          <div class="bg-[#c29467]/10 rounded-full p-3">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="border-2 border-[#c29467]/80 size-5 rounded-full fill-[#c29467]/80">
+              <path d="M272 112C272 85.5 293.5 64 320 64C346.5 64 368 85.5 368 112C368 138.5 346.5 160 320 160C293.5 160 272 138.5 272 112zM224 256C224 238.3 238.3 224 256 224L320 224C337.7 224 352 238.3 352 256L352 512L384 512C401.7 512 416 526.3 416 544C416 561.7 401.7 576 384 576L256 576C238.3 576 224 561.7 224 544C224 526.3 238.3 512 256 512L288 512L288 288L256 288C238.3 288 224 273.7 224 256z"/>
+            </svg>
+          </div>
+        }
+      }
+      <p class="font-semibold whitespace-pre-line text-slate-700">{{ notification?.message }}</p>
+      @if (notification.type !== 'Loading') {
+        <button (click)="close(notification.id)" class="ml-2 p-1 hover:bg-slate-100 rounded-full transition-colors group" aria-label="Schließen">
+          <svg xmlns="http://www.w3.org/2000/svg" class="size-5 fill-slate-400 group-hover:fill-slate-600" viewBox="0 0 20 20">
+            <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z"/>
+          </svg>
+        </button>
+      }
+    </div>
+  }
+</div>

@@ -1,0 +1,9 @@
+.sidebar-icon svg,
+.sidebar-icon svg path {
+  fill: currentColor;
+}
+
+:host ::ng-deep svg,
+:host ::ng-deep svg path {
+  fill: currentColor !important;
+}
