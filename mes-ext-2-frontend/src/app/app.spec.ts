@@ -18,6 +18,6 @@ describe('App', () => {
     const fixture = TestBed.createComponent(App);
     await fixture.whenStable();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, mes-ext-2-frontend');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, Neo-MES-2-frontend');
   });
 });

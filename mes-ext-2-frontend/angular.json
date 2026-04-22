@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "mes-ext-2-frontend": {
+    "Neo-MES-2-frontend": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -29,9 +29,7 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.css"
-            ]
+            "styles": ["src/styles.css"]
           },
           "configurations": {
             "production": {
@@ -73,10 +71,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "mes-ext-2-frontend:build:production"
+              "buildTarget": "Neo-MES-2-frontend:build:production"
             },
             "development": {
-              "buildTarget": "mes-ext-2-frontend:build:development"
+              "buildTarget": "Neo-MES-2-frontend:build:development"
             }
           },
           "defaultConfiguration": "development"

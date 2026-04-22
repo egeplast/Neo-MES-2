@@ -5,5 +5,5 @@ import { environment } from '../../../environments/environment';
 @Injectable({ providedIn: 'root' })
 export class MesExt2Service {
   private readonly http = inject(HttpClient);
-  private readonly baseUrl = `${environment.apiBaseUrl}/mes-ext-2`;
+  private readonly baseUrl = `${environment.apiBaseUrl}/Neo-MES-2`;
 }

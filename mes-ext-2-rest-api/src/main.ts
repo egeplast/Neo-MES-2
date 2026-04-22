@@ -11,7 +11,7 @@ async function bootstrap() {
     origin: [
       'http://localhost:4200',
       'http://localhost:12001',
-      'https://mes-ext-2.egeplast.de',
+      'https://Neo-MES-2.egeplast.de',
     ],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,

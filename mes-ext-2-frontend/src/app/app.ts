@@ -11,12 +11,12 @@ import { MesExt2Store } from './store/MesExt2/MesExt2.store';
 
 @Component({
   selector: 'app-root',
-imports: [RouterOutlet, HeaderComponent, SidebarComponent, NotificationComponent],
+  imports: [RouterOutlet, HeaderComponent, SidebarComponent, NotificationComponent],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
 export class App implements OnInit, OnDestroy {
-  title = 'mes-ext-2-frontend';
+  title = 'Neo-MES-2-frontend';
 
   private readonly destroy$ = new Subject<void>();
   private readonly msalService = inject(MsalService);

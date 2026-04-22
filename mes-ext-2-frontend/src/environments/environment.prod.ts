@@ -10,11 +10,11 @@ export const environment = {
   MSAL_me: 'https://graph.microsoft.com/v1.0/me',
   MSAL_clientId: '950d6ba9-2b71-4ab8-bc6d-988b9a6e425f',
   MSAL_authority: 'https://login.microsoftonline.com/aa814ea0-117a-4490-bfb2-b126a59c277c',
-  MSAL_redirectUri: 'https://mes-ext-2.egeplast.de',
-  MSAL_postLogoutRedirectUri: 'https://mes-ext-2.egeplast.de',
+  MSAL_redirectUri: 'https://Neo-MES-2.egeplast.de',
+  MSAL_postLogoutRedirectUri: 'https://Neo-MES-2.egeplast.de',
   MSAL_scopes: ['user.read'],
   MSAL_loginFailedRoute: '/',
-  apiBaseUrl: 'https://mes-ext-2.egeplast.de/api',
+  apiBaseUrl: 'https://Neo-MES-2.egeplast.de/api',
   /**
    * Format: api://{BACKEND_CLIENT_ID}/{SCOPE_NAME}
    * Beispiel: api://11111111-2222-3333-4444-555555555555/User.Read

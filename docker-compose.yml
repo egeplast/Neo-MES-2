@@ -1,10 +1,9 @@
 services:
-
   postgres:
     image: postgres:17
-    container_name: mes-ext-2-db-postgres
+    container_name: Neo-MES-2-db-postgres
     volumes:
-      - mes-ext-2-postgres-data:/var/lib/postgresql/data
+      - Neo-MES-2-postgres-data:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: "veYjzlrAQlYif1oagwllkvVc07rcrsIG"
       POSTGRES_USER: "mesext2"
@@ -13,42 +12,41 @@ services:
       - "127.0.0.1:12100:5432"
     restart: always
     networks:
-      - mes-ext-2_network
+      - Neo-MES-2_network
 
   backend:
     build:
       context: .
-      dockerfile: ./mes-ext-2-rest-api/Dockerfile
-    container_name: mes-ext-2-rest-api
+      dockerfile: ./Neo-MES-2-rest-api/Dockerfile
+    container_name: Neo-MES-2-rest-api
     ports:
-      - "127.0.0.1:12Ã010:80"
+      - "127.0.0.1:12ï¿½010:80"
     env_file:
-      - ./mes-ext-2-rest-api/.env
+      - ./Neo-MES-2-rest-api/.env
     volumes:
       - ./media:/app/media
     restart: always
     networks:
-      - mes-ext-2_network
+      - Neo-MES-2_network
 
   # Build: docker compose build --build-arg c=development frontend
   frontend:
     build:
       context: .
-      dockerfile: ./mes-ext-2-frontend/Dockerfile
+      dockerfile: ./Neo-MES-2-frontend/Dockerfile
       args:
         CONFIGURATION: production
-    container_name: mes-ext-2-frontend
+    container_name: Neo-MES-2-frontend
     ports:
       - "127.0.0.1:12001:80"
     restart: always
     networks:
-      - mes-ext-2_network
-
+      - Neo-MES-2_network
 
 volumes:
-  mes-ext-2-postgres-data:
+  Neo-MES-2-postgres-data:
     driver: local
 
 networks:
-  mes-ext-2_network:
+  Neo-MES-2_network:
     driver: bridge
