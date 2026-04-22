@@ -6,8 +6,8 @@ services:
       - Neo-MES-2-postgres-data:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: "veYjzlrAQlYif1oagwllkvVc07rcrsIG"
-      POSTGRES_USER: "mesext2"
-      POSTGRES_DB: "mesext2"
+      POSTGRES_USER: "NeoMES2"
+      POSTGRES_DB: "NeoMES2"
     ports:
       - "127.0.0.1:12100:5432"
     restart: always
@@ -17,12 +17,12 @@ services:
   backend:
     build:
       context: .
-      dockerfile: ./Neo-MES-2-rest-api/Dockerfile
-    container_name: Neo-MES-2-rest-api
+      dockerfile: ./neo-mes-2-rest-api/Dockerfile
+    container_name: neo-mes-2-rest-api
     ports:
-      - "127.0.0.1:12�010:80"
+      - "127.0.0.1:12010:80"
     env_file:
-      - ./Neo-MES-2-rest-api/.env
+      - ./neo-mes-2-rest-api/.env
     volumes:
       - ./media:/app/media
     restart: always
@@ -33,10 +33,10 @@ services:
   frontend:
     build:
       context: .
-      dockerfile: ./Neo-MES-2-frontend/Dockerfile
+      dockerfile: ./neo-mes-2-frontend/Dockerfile
       args:
-        CONFIGURATION: production
-    container_name: Neo-MES-2-frontend
+        c: production
+    container_name: neo-mes-2-frontend
     ports:
       - "127.0.0.1:12001:80"
     restart: always

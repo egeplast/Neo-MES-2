@@ -1,0 +1,82 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model AuditLog {
+  id            String   @id @default(uuid())
+  timestamp     DateTime @default(now())
+  userAzureId   String?
+  userEmail     String?
+  userDisplay   String?
+  method        String
+  path          String
+  resource      String?
+  resourceId    String?
+  action        String
+  statusCode    Int
+  payload       Json?
+  response      Json?
+  ipAddress     String?
+  userAgent     String?
+
+  @@index([timestamp])
+  @@index([userAzureId])
+  @@index([resource, resourceId])
+  @@map("audit_log")
+}
+
+model OpcuaNode {
+  id         Int     @id @default(autoincrement())
+
+  /// Zu welcher SPS-Verbindung gehört dieser Node?
+  /// Muss einem Eintrag in OPCUA_ENDPOINTS entsprechen
+  connection String  // "Motan_Convey", "Linie_201", ...
+
+  /// Logische Gruppierung
+  group      String  // "Silo", "Extruder", "Linie", "GC"
+
+  /// Welches Element innerhalb der Gruppe
+  index      Int     // 1-38 bei Silos, 201/203/... bei Linien
+
+  /// Welches Feld an diesem Element
+  field      String  // "Artikelnummer", "Vorrat", "FA_Nummer", ...
+
+  /// OPC UA Browse Path — der Weg ab dem Root-Node
+  browsePath String
+
+  /// Der Startpunkt für den Browse Path
+  rootNodeId String  // "ns=3;s=ServerInterfaces"
+
+  /// Wird beim App-Start automatisch gefüllt
+  resolvedId String?
+
+  /// Optionale Metadaten fürs Frontend
+  unit       String? // "kg", "m/min", "°C"
+  label      String? // Anzeigename
+
+  @@unique([connection, group, index, field])
+}
+
+model Silo {
+  id          Int       @id @default(autoincrement())
+  nummer      Int       @unique
+  bezeichnung String?
+  standort    String?
+  materialId  Int?
+  material    Material? @relation(fields: [materialId], references: [id])
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Material {
+  id           Int     @id @default(autoincrement())
+  artikelnummer String  @unique
+  bezeichnung  String?
+  typ          String? // "PE", "PP", ...
+  silos        Silo[]
+}
