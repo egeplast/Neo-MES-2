@@ -19,7 +19,7 @@ const initialState: SiloState = {
   Windgeschwindigkeit: null,
 };
 
-const MAX_GEWICHT = 35000;
+const MAX_GEWICHT = 25000;
 const SILO_COUNT = 24;
 const POLL_INTERVAL = 60000;
 
